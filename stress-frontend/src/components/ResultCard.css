@@ -1,0 +1,86 @@
+.result-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  border: 1px solid;
+  backdrop-filter: blur(16px);
+  animation: fadeInUp 0.6s ease both;
+  overflow: hidden;
+}
+
+/* Stressed state */
+.result-card--stressed {
+  background: rgba(255, 60, 60, 0.08);
+  border-color: rgba(255, 80, 80, 0.4);
+  box-shadow: 0 0 60px rgba(255, 60, 60, 0.2);
+}
+
+/* Normal state */
+.result-card--normal {
+  background: rgba(0, 220, 150, 0.08);
+  border-color: rgba(0, 220, 150, 0.4);
+  box-shadow: 0 0 60px rgba(0, 220, 150, 0.2);
+}
+
+/* Pulsing ring background */
+.result-pulse-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  animation: pulseRing 2.4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.result-card--stressed .result-pulse-ring {
+  box-shadow: inset 0 0 60px rgba(255, 60, 60, 0.15);
+}
+
+.result-card--normal .result-pulse-ring {
+  box-shadow: inset 0 0 60px rgba(0, 220, 150, 0.1);
+}
+
+@keyframes pulseRing {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
+
+.result-emoji {
+  font-size: 3.5rem;
+  position: relative;
+  z-index: 1;
+  animation: bouncePop 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes bouncePop {
+  0%   { transform: scale(0.4); opacity: 0; }
+  60%  { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.result-label {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  position: relative;
+  z-index: 1;
+  color: var(--color-text);
+}
+
+.result-card--stressed .result-label { color: #ff6b6b; }
+.result-card--normal  .result-label { color: #00dc96; }
+
+.result-message {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  text-align: center;
+  max-width: 260px;
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}

@@ -1,0 +1,309 @@
+/* ── App Layout ── */
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem 4rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  animation: fadeInUp 0.5s ease both;
+}
+
+.header-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 32px;
+}
+
+.ecg-logo {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 6px var(--color-accent));
+}
+
+.header-title {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #fff 40%, var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-sub {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin: 0.2rem 0 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── Controls ── */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  animation: fadeInUp 0.5s 0.1s ease both;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.6rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--color-accent), #00a8cc);
+  color: #000;
+  box-shadow: 0 4px 24px rgba(0, 230, 200, 0.3);
+}
+
+.btn--primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 230, 200, 0.45);
+}
+
+.btn-icon {
+  font-style: normal;
+}
+
+/* ── Spinner ── */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Toggle ── */
+.toggle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle {
+  width: 44px;
+  height: 24px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  transition: background 0.25s ease;
+  cursor: pointer;
+}
+
+.toggle--on {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.toggle-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.25s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+.toggle--on .toggle-knob {
+  transform: translateX(20px);
+}
+
+.toggle-label {
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+.toggle-hint {
+  color: var(--color-muted);
+  font-size: 0.78rem;
+}
+
+/* ── Last updated ── */
+.last-updated {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  margin-left: auto;
+}
+
+/* ── Error Banner ── */
+.error-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 60, 60, 0.1);
+  border: 1px solid rgba(255, 80, 80, 0.4);
+  border-radius: 14px;
+  animation: fadeInUp 0.4s ease both;
+}
+
+.error-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+
+.error-banner strong {
+  display: block;
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+}
+
+.error-banner p {
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  margin: 0;
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+/* ── Data Panel ── */
+.data-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* ── Section ── */
+.section-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-muted);
+  margin: 0 0 0.9rem;
+  font-weight: 600;
+}
+
+.metrics-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ── Empty State ── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: var(--color-muted);
+  animation: fadeInUp 0.5s 0.2s ease both;
+}
+
+.empty-icon { font-size: 3rem; }
+
+.empty-state p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 300px;
+  margin: 0;
+}
+
+/* ── Background orbs ── */
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+
+.bg-orb--1 {
+  width: 420px; height: 420px;
+  background: var(--color-accent);
+  top: -100px; left: -100px;
+  animation-delay: 0s;
+}
+
+.bg-orb--2 {
+  width: 340px; height: 340px;
+  background: #7b61ff;
+  bottom: -80px; right: -80px;
+  animation-delay: -3s;
+}
+
+.bg-orb--3 {
+  width: 260px; height: 260px;
+  background: #ff6b6b;
+  top: 40%; left: 60%;
+  opacity: 0.12;
+  animation-delay: -5s;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(20px, -20px) scale(1.05); }
+}
+
+/* ── ECG sweep line ── */
+.ecg-sweep {
+  position: fixed;
+  top: 0; left: -100%;
+  width: 60%; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  opacity: 0.3;
+  animation: ecgSweep 6s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes ecgSweep {
+  0%   { top:  5%; left: -60%; }
+  50%  { top: 50%; }
+  100% { top: 95%; left: 110%; }
+}
